@@ -1,4 +1,0 @@
-
-
-console.log("Hello Machio");
-console.log(Math.max(1,23,44,54));
