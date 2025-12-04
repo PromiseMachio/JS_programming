@@ -239,7 +239,7 @@ rl.question("Enter amount you earn:", function(e){
 })
 */
 
-
+/*
 // Switch statements
 // We are going to create cases
 const readline = require("readline")
@@ -308,3 +308,140 @@ rl.question("Enter time (24HRS) to check task: ", function(t) {
 
     rl.close();
 })
+
+*/
+
+// Chapter projects.
+/*
+// Fortune revised
+let fortunes = [
+    "Today is your lucky day.",
+    "Hold on you are about to get a suprise.",
+    "You are to get rained on.",
+    "What you need is a wake up call.",
+    "You are so lucky to have nice harvest."
+]
+
+// Create random numbers using Math.random
+let randomNo = Math.floor(Math.random()*5)+1;
+
+// Initialize a variable empty to be able to store and output the fortune
+
+let selectedFortune = ""
+
+if(randomNo == 1){
+    selectedFortune="Today is your lucky day.";
+}else if(randomNo == 2){
+    selectedFortune="Hold on you are about to get a suprise.";
+}else if(randomNo == 3){
+    selectedFortune="You are to get rained on.";
+}else if(randomNo == 4){
+    selectedFortune="What you need is a wake up call";
+    
+}else if(randomNo == 5){
+    selectedFortune ="You are so lucky to have nice havest";
+}
+
+console.log(selectedFortune)
+*/
+
+/*
+// ROCK PAPER SCISSORS GAME.
+
+// User input
+const readline = require("readline");
+const rl = readline.createInterface({
+    input:process.stdin,
+    output:process.stdout
+})
+let input;
+rl.question("You have:\n[1]:ROCK\n[2]:PAPER\n[3]:SCISSORS\n Choose one number for the game", function(i){
+    input = i
+    let = [
+    "rock",
+    "paper",
+    "scissors"
+    ]
+
+    // create a random number variable
+    let randomNo = Math.floor(Math.random()*2)+1
+
+    // User variable to store value 
+    let gameStore = "";
+    let result = 10;
+
+    // Choice is rock
+    if (randomNo == 1 && i === 3  ){
+	result += 5
+	console.log(`A win ***ROCK beat SCISSORS***\nPoints ${result}`)
+    }else if (randomNo == 1 && i === 2 || randomNo == 1 && i == 1 ){
+	result -= 5
+	console.log(`You Losses ***your input ${i} did not beat ${randomNo == 1}***\nPoints ${result}`)
+    }else if (randomNo == 2 && i === 1  ){
+	result += 5
+	console.log(`A win ***PAPER beat ROCK***\nPoints ${result}`)
+    }else if(randomNo == 2 && i === 3 || randomNo == 2 && i == 2 ){
+	result -= 5
+	console.log(`You Losses ***your input ${i} did not beat ${randomNo == 1}***\nPoints ${result}`)
+    }else if(randomNo == 3 && i === 2  ){
+	result += 5
+	console.log(`A win ***SCISSORS beat PAPER***\nPoints ${result}`)
+    }else if(randomNo == 3 && i === 3 || randomNo == 3 && i == 1 ){
+	result -= 5
+	console.log(`You Losses ***your input ${i} did not beat ${randomNo == 1}***\nPoints ${result}`)
+    }else{
+	console.log("Read instructions of the GAME\n Enter one of\n[1]:ROCK\n[2]:PAPER\n[3]:SCISSORS  ")
+    }
+    rl.close();
+	})
+
+*/
+//COMPARE
+
+const readline = require("readline");
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+rl.question("You have:\n[1]: ROCK\n[2]: PAPER\n[3]: SCISSORS\nChoose one number: ", function(i) {
+
+    let user = Number(i);
+
+    if (![1,2,3].includes(user)) {
+        console.log("Invalid choice. Use 1 for ROCK, 2 for PAPER, 3 for SCISSORS.");
+        return rl.close();
+    }
+
+    // random number 1–3
+    let randomNo = Math.floor(Math.random() * 3) + 1;
+
+    // points
+    let result = 10;
+
+    let moves = ["", "ROCK", "PAPER", "SCISSORS"];
+
+    console.log(`\nYou chose: ${moves[user]}`);
+    console.log(`Computer chose: ${moves[randomNo]}`);
+
+    // --- GAME LOGIC ---
+    if (user === randomNo) {
+        console.log("It's a tie! No points gained.");
+    } 
+    else if (
+        (user === 1 && randomNo === 3) || // rock beats scissors
+        (user === 2 && randomNo === 1) || // paper beats rock
+        (user === 3 && randomNo === 2)    // scissors beats paper
+    ) {
+        result += 5;
+        console.log(`You WIN! ${moves[user]} beats ${moves[randomNo]}.`);
+        console.log(`Points: ${result}`);
+    }
+    else {
+        result -= 5;
+        console.log(`You LOSE! ${moves[randomNo]} beats ${moves[user]}.`);
+        console.log(`Points: ${result}`);
+    }
+
+    rl.close();
+});
